@@ -22,7 +22,7 @@ pipeline {
         stage("Build Docker Image") {
             steps {
                 script {
-                    docker.build(env.DOCKER_IMAGE)
+                    bat "docker build -t ${env.DOCKER_IMAGE} ."
                 }
             }
         }
@@ -30,10 +30,11 @@ pipeline {
         stage("Clean Previous Container") {
             steps {
                 script {
-                    sh '''
-                        docker ps -q --filter name=${DOCKER_CONTAINER} | grep -q . && docker stop ${DOCKER_CONTAINER} || true
-                        docker ps -aq --filter name=${DOCKER_CONTAINER} | grep -q . && docker rm ${DOCKER_CONTAINER} || true
-                    '''
+                    // Using Windows batch commands
+                    bat """
+                        docker ps -q --filter name=${env.DOCKER_CONTAINER} && docker stop ${env.DOCKER_CONTAINER} || exit 0
+                        docker ps -aq --filter name=${env.DOCKER_CONTAINER} && docker rm ${env.DOCKER_CONTAINER} || exit 0
+                    """
                 }
             }
         }
@@ -41,7 +42,7 @@ pipeline {
         stage("Run Docker Container") {
             steps {
                 script {
-                    docker.image(env.DOCKER_IMAGE).run("-d --name ${env.DOCKER_CONTAINER} -p ${env.PORT_MAPPING}")
+                    bat "docker run -d --name ${env.DOCKER_CONTAINER} -p ${env.PORT_MAPPING} ${env.DOCKER_IMAGE}"
                 }
             }
         }
@@ -50,7 +51,7 @@ pipeline {
     post {
         always {
             // Clean up old images
-            sh "docker image prune -f"
+            bat "docker image prune -f"
         }
         failure {
             echo 'Pipeline failed!'
