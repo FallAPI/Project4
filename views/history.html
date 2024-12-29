@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tranaction History</title>
+    <link rel="stylesheet" href="../styles/history.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-logo">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="currentColor"
+              class="bi bi-boxes"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"
+              />
+            </svg>
+            <span>SINIIAJA.</span>
+          </a>
+        </div>
+
+        <div>
+          <p>Hello, Admin Ndaa</p>
+        </div>
+      </nav>
+      <aside>
+        <div class="aside-wrap">
+          <div class="aside-inner">
+            <a href="./admin.html">Home</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./add-service.html">Services</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./add-payment.html">Payment</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./history.html">History</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./admin.html">Logout</a>
+          </div>
+        </div>
+      </aside>
+    </header>
+    <main>
+      <section>
+        <div class="container">
+          <h2>Ongoing Reservations</h2>
+          <table id="ongoingReservationsTable">
+            <thead>
+              <tr>
+                <th>Reservation ID</th>
+                <th>Reservation Code</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Customer Phone Number</th>
+                <th>Service ID</th>
+                <th>Payment ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Data will be dynamically inserted here -->
+            </tbody>
+          </table>
+
+          <h2>Reservation History</h2>
+          <table id="reservationHistoryTable">
+            <thead>
+              <tr>
+                <th>Reservation ID</th>
+                <th>Payment ID</th>
+                <th>Status ID</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Data will be dynamically inserted here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize with mock data for ongoing reservations
+      const ongoingReservations = [
+        {
+          reservation_id: 1,
+          reservation_code: "ABC123456",
+          customer_name: "John Doe",
+          customer_email: "john@example.com",
+          customer_phone_number: "1234567890",
+          service_id: 1,
+          payment_id: 1,
+        },
+        {
+          reservation_id: 2,
+          reservation_code: "DEF654321",
+          customer_name: "Jane Smith",
+          customer_email: "jane@example.com",
+          customer_phone_number: "0987654321",
+          service_id: 2,
+          payment_id: 2,
+        },
+      ];
+      displayOngoingReservations(ongoingReservations);
+
+      // Initialize with mock data for reservation history
+      const reservationHistory = [
+        {
+          reservation_id: 1,
+          payment_id: 1,
+          status_id: 3,
+          created_at: "2023-07-01 12:00:00",
+          updated_at: "2023-07-01 13:00:00",
+        },
+        {
+          reservation_id: 2,
+          payment_id: 2,
+          status_id: 2,
+          created_at: "2023-07-02 14:00:00",
+          updated_at: "2023-07-02 15:00:00",
+        },
+      ];
+      displayReservationHistory(reservationHistory);
+    });
+
+    function displayOngoingReservations(data) {
+      const tbody = document.querySelector("#ongoingReservationsTable tbody");
+      tbody.innerHTML = "";
+      data.forEach((reservation) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+                <td>${reservation.reservation_id}</td>
+                <td>${reservation.reservation_code}</td>
+                <td>${reservation.customer_name}</td>
+                <td>${reservation.customer_email}</td>
+                <td>${reservation.customer_phone_number}</td>
+                <td>${reservation.service_id}</td>
+                <td>${reservation.payment_id}</td>
+            `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function displayReservationHistory(data) {
+      const tbody = document.querySelector("#reservationHistoryTable tbody");
+      tbody.innerHTML = "";
+      data.forEach((history) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+                <td>${history.reservation_id}</td>
+                <td>${history.payment_id}</td>
+                <td>${history.status_id}</td>
+                <td>${history.created_at}</td>
+                <td>${history.updated_at}</td>
+            `;
+        tbody.appendChild(row);
+      });
+    }
+  </script>
+</html>

@@ -1,0 +1,122 @@
+:root {
+  --primary-color: #222831;
+  --secondary-color: #393e46;
+  --accent-color: #00adb5;
+  --neutral-color: #eeeeee;
+  --neutral-color-50: rgba(255, 255, 255, 0.5);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2%;
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--secondary-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  color: var(--neutral-color);
+}
+
+.navbar-logo a {
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--neutral-color);
+  font-style: italic;
+}
+
+.navbar-logo a span {
+  font-weight: normal;
+  margin: auto 0;
+}
+
+.navbar > div:last-child {
+  font-size: 1.4rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+aside {
+    bottom: 0;
+  min-height: 100vh;
+  width: 15%;
+  position: absolute;
+  padding: 10rem 2% 2rem;
+  background-color: #1d232c;
+  position: fixed;
+}
+
+.aside-inner {
+  padding: 1.4rem 0;
+}
+
+.aside-inner a {
+  font-size: 1.8rem;
+  color: var(--neutral-color);
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 10rem 2% 6rem 17%;
+}
+
+.container {
+    display: flexbox;
+  width: 100%;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 3rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+table,
+th,
+td {
+  border: 3px solid black;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: center;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--neutral-color);
+}
+
+button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  cursor: pointer;
+}

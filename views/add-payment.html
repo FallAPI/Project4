@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Method</title>
+    <link rel="stylesheet" href="../styles/add-payment.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-logo">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="currentColor"
+              class="bi bi-boxes"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"
+              />
+            </svg>
+            <span>SINIIAJA.</span>
+          </a>
+        </div>
+
+        <div>
+          <p>Hello, Admin Ndaa</p>
+        </div>
+      </nav>
+      <aside>
+        <div class="aside-wrap">
+          <div class="aside-inner">
+            <a href="./admin.html">Home</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./add-service.html">Services</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./add-payment.html">Payment</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./history.html">History</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./admin.html">Logout</a>
+          </div>
+        </div>
+      </aside>
+    </header>
+    <main>
+      <section>
+        <div class="container">
+          <h1>Payment Table</h1>
+          <table id="paymentTable">
+            <thead>
+              <tr>
+                <th>Payment ID</th>
+                <th>Payment Name</th>
+                <th>Payment Account</th>
+                <th>Payment Image ID</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Data will be dynamically inserted here -->
+            </tbody>
+          </table>
+          <button id="payment-btn" onclick="showAddForm()">
+            Add New Payment
+          </button>
+
+          <div id="formContainer" style="display: none">
+            <h2 id="formTitle">New Payment Form</h2>
+            <form id="paymentForm">
+              <input type="hidden" id="payment_id" name="payment_id" />
+              <label for="payment_name">Payment Name:</label>
+              <input
+                type="text"
+                id="payment_name"
+                name="payment_name"
+                required
+              />
+              <label for="payment_account">Payment Account:</label>
+              <input
+                type="text"
+                id="payment_account"
+                name="payment_account"
+                required
+              />
+              <label for="payment_image_id">Payment Image ID:</label>
+              <input
+                type="number"
+                id="payment_image_id"
+                name="payment_image_id"
+                required
+              />
+              <button id="submit-btn" type="submit">Submit</button>
+              <button id="cancle-btn" type="button" onclick="hideForm()">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize with mock data
+      const mockData = [
+        {
+          payment_id: 1,
+          payment_name: "PayPal",
+          payment_account: "paypal@example.com",
+          payment_image_id: 101,
+        },
+        {
+          payment_id: 2,
+          payment_name: "Stripe",
+          payment_account: "stripe@example.com",
+          payment_image_id: 102,
+        },
+        {
+          payment_id: 3,
+          payment_name: "Square",
+          payment_account: "square@example.com",
+          payment_image_id: 103,
+        },
+      ];
+      displayPayments(mockData);
+
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(this);
+          const paymentId = formData.get("payment_id");
+
+          if (paymentId) {
+            // Update payment in mock data
+            const paymentIndex = mockData.findIndex(
+              (payment) => payment.payment_id == paymentId
+            );
+            mockData[paymentIndex] = {
+              payment_id: parseInt(paymentId),
+              payment_name: formData.get("payment_name"),
+              payment_account: formData.get("payment_account"),
+              payment_image_id: parseInt(formData.get("payment_image_id")),
+            };
+          } else {
+            // Add payment to mock data
+            const newPayment = {
+              payment_id: mockData.length + 1,
+              payment_name: formData.get("payment_name"),
+              payment_account: formData.get("payment_account"),
+              payment_image_id: parseInt(formData.get("payment_image_id")),
+            };
+            mockData.push(newPayment);
+          }
+          displayPayments(mockData);
+          hideForm();
+        });
+    });
+
+    function displayPayments(data) {
+      const tbody = document.querySelector("#paymentTable tbody");
+      tbody.innerHTML = "";
+      data.forEach((payment) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+                <td>${payment.payment_id}</td>
+                <td>${payment.payment_name}</td>
+                <td>${payment.payment_account}</td>
+                <td>${payment.payment_image_id}</td>
+                <td>
+                    <button id="edit-btn" onclick="editPayment(${payment.payment_id})">Edit</button>
+                    <button id="delete-btn" onclick="deletePayment(${payment.payment_id})">Delete</button>
+                </td>
+            `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function showAddForm() {
+      document.getElementById("formTitle").innerText = "Add Payment";
+      document.getElementById("paymentForm").reset();
+      document.getElementById("formContainer").style.display = "block";
+    }
+
+    function editPayment(paymentId) {
+      const payment = mockData.find(
+        (payment) => payment.payment_id == paymentId
+      );
+      document.getElementById("formTitle").innerText = "Edit Payment";
+      document.getElementById("payment_id").value = payment.payment_id;
+      document.getElementById("payment_name").value = payment.payment_name;
+      document.getElementById("payment_account").value =
+        payment.payment_account;
+      document.getElementById("payment_image_id").value =
+        payment.payment_image_id;
+      document.getElementById("formContainer").style.display = "block";
+    }
+
+    function deletePayment(paymentId) {
+      if (confirm("Are you sure you want to delete this payment?")) {
+        const paymentIndex = mockData.findIndex(
+          (payment) => payment.payment_id == paymentId
+        );
+        mockData.splice(paymentIndex, 1);
+        displayPayments(mockData);
+      }
+    }
+
+    function hideForm() {
+      document.getElementById("formContainer").style.display = "none";
+    }
+  </script>
+</html>

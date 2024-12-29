@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Services</title>
+    <style>
+      :root {
+        --primary-color: #222831;
+        --secondary-color: #393e46;
+        --accent-color: #00adb5;
+        --neutral-color: #eeeeee;
+        --neutral-color-50: rgba(255, 255, 255, 0.5);
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        font-family: "Poppins", sans-serif;
+      }
+
+      ::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 2%;
+        background-color: var(--primary-color);
+        border-bottom: 1px solid var(--secondary-color);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        color: var(--neutral-color);
+      }
+
+      .navbar-logo a {
+        font-family: "Playfair Display", serif;
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: var(--neutral-color);
+        font-style: italic;
+      }
+
+      .navbar-logo a span {
+        font-weight: normal;
+        margin: auto 0;
+      }
+
+      .navbar > div:last-child {
+        font-size: 1.4rem;
+        font-weight: normal;
+        cursor: pointer;
+      }
+
+      aside {
+        bottom: 0;
+      min-height: 100vh;
+      width: 15%;
+      position: absolute;
+      padding: 10rem 2% 2rem;
+      background-color: #1d232c;
+      position: fixed;
+    }
+
+      .aside-inner {
+        padding: 1.4rem 0;
+      }
+
+      .aside-inner a {
+        font-size: 1.8rem;
+        color: var(--neutral-color);
+      }
+
+      section {
+        min-height: 100vh;
+        width: 100%;
+        padding: 10rem 2% 6rem 17%;
+        background-color: var(--neutral-color);
+      }
+
+      .hero-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+      }
+
+      .hero-1:first-child {
+        font-size: 3rem;
+      }
+
+      form {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: left;
+        gap: 20px;
+        font-size: 1.8rem;
+      }
+
+      input,
+      textarea {
+        background-color: var(--primary-color);
+        color: var(--neutral-color);
+        padding: 0.6rem 1.2rem;
+        font-size: 1.4rem;
+      }
+
+      button {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+        border-radius: 10px;
+        background-color: var(--primary-color);
+        color: var(--neutral-color);
+      }
+
+      button:hover {
+        background-color: rgba(34, 40, 49, 0.6);
+      }
+
+      .hero-2 {
+        display: block;
+      }
+
+      .hero-2 h1 {
+        font-size: 4rem;
+      }
+
+      .service {
+        margin: 2rem 0 0 25%;
+        position: relative;
+        background-color: #dddddd;
+        width: 400px;
+        height: 400px;
+        filter: grayscale(35%);
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to top, #00adb5, rgba(0, 0, 0, 0));
+        z-index: 0;
+      }
+
+      .service > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+      }
+
+      .service:hover {
+        transform: translateY(-5px);
+        filter: drop-shadow(0 0 10px #00adb5);
+        cursor: pointer;
+      }
+
+      .content {
+        position: absolute;
+        color: #000000;
+        bottom: 0;
+        padding: 10px 10px;
+      }
+
+      .content > h3 {
+        font-size: 1.3rem;
+        filter: drop-shadow(0 0 10px black);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-logo">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="currentColor"
+              class="bi bi-boxes"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"
+              />
+            </svg>
+            <span>SINIIAJA.</span>
+          </a>
+        </div>
+
+        <div>
+          <p>Hello, Admin Ndaa</p>
+        </div>
+      </nav>
+      <aside>
+        <div class="aside-wrap">
+          <div class="aside-inner">
+            <a href="./admin.html">Home</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./add-service.html">Services</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./add-payment.html">Payment</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./history.html">History</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./admin.html">Logout</a>
+          </div>
+        </div>
+      </aside>
+    </header>
+    <main>
+      <section>
+        <div class="hero-wrapper">
+          <div class="hero-1">
+            <h1>Service form</h1>
+            <form action="">
+              <label for="service_name">Service name:</label>
+              <input
+                type="text"
+                name="service_name"
+                id="service_name"
+                required
+              />
+              <label for="service_description">Service description:</label>
+              <textarea
+                name="service_description"
+                id="service_description"
+                required
+              ></textarea>
+              <label for="service_cost"
+                >Service cost (showed only on reservation form):</label
+              >
+              <input
+                type="number"
+                name="service_cost"
+                id="service_cost"
+                required
+              />
+              <label for="service_image">Service image:</label>
+              <input
+                type="file"
+                name="service_image"
+                id="service_image"
+                accept="image/*"
+                required
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+          <div class="hero-2">
+            <h1>Service preview</h1>
+
+            <div class="service">
+              <img src="" alt="" />
+              <div class="bg"></div>
+              <div class="content">
+                <h3 id="content_title">service`s title</h3>
+                <p id="content_desc">service`s desc</p>
+              </div>
+            </div>
+          </div>
+          <!-- hero 2 end -->
+        </div>
+        <!-- hero wrp end -->
+      </section>
+    </main>
+    <script>
+      const fileInput = document.querySelector("#service_image");
+      const imageEl = document.querySelector(".service > img");
+
+      fileInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            imageEl.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      document
+        .querySelector("#service_name")
+        .addEventListener("input", (event) => {
+          document.querySelector("#content_title").innerHTML =
+            event.target.value;
+        });
+
+      document
+        .querySelector("#service_description")
+        .addEventListener("input", (event) => {
+          document.querySelector("#content_desc").innerHTML =
+            event.target.value;
+        });
+    </script>
+  </body>
+</html>

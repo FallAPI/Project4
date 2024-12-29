@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../styles/admin.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-logo">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="currentColor"
+              class="bi bi-boxes"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"
+              />
+            </svg>
+            <span>SINIIAJA.</span>
+          </a>
+        </div>
+
+        <div>
+          <p>Hello, Admin Ndaa</p>
+        </div>
+      </nav>
+      <aside>
+        <div class="aside-wrap">
+          <div class="aside-inner">
+            <a href="./admin.html">Home</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./add-service.html">Services</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./add-payment.html">Payment</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./history.html">History</a>
+          </div>
+          <div class="aside-inner">
+            <a href="./admin.html">Logout</a>
+          </div>
+        </div>
+      </aside>
+    </header>
+    <main>
+      <section id="hero">
+        <div class="hero-wrap">
+          <div class="hero-1">
+            <p>SINIIAJA Dashboard - <span id="date-time"></span></p>
+          </div>
+          <div class="hero-2">
+            <div class="small-card">
+              <i data-feather="shopping-cart"></i>
+              <p>12 Orders for today</p>
+            </div>
+            <div class="small-card">
+              <i data-feather="shopping-cart"></i>
+              <p>12 Orders for this month</p>
+            </div>
+            <div class="small-card">
+              <i data-feather="shopping-cart"></i>
+              <p>12 Canceled orders for today</p>
+            </div>
+            <div class="small-card">
+              <i data-feather="shopping-cart"></i>
+              <p>12 Canceled orders this month</p>
+            </div>
+          </div>
+          <div class="hero-3">
+            <a href="./add-service.html" class="big-card">
+              <p>Add New Services <i data-feather="plus-circle"></i></p>
+            </a>
+            <a href="./add-payment.html" class="big-card">
+              <p>Add New Payment Method <i data-feather="plus-circle"></i></p>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      feather.replace();
+    </script>
+    <script>
+      window.addEventListener("load", () => {
+        clock();
+        function clock() {
+          const today = new Date();
+          const hours = today.getHours();
+          const minutes = today.getMinutes();
+          const seconds = today.getSeconds();
+          const hour = hours < 10 ? "0" + hours : hours;
+          const minute = minutes < 10 ? "0" + minutes : minutes;
+          const second = seconds < 10 ? "0" + seconds : seconds;
+          const hourTime = hour > 12 ? hour - 12 : hour;
+          const ampm = hour < 12 ? "AM" : "PM";
+          const month = today.getMonth();
+          const year = today.getFullYear();
+          const day = today.getDate();
+          const monthList = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ];
+          const date = day + " " + monthList[month];
+          const time = hourTime + ":" + minute + ":" + second + " " + ampm;
+          const dateTime = date + " (" + time + ") ";
+          document.getElementById("date-time").innerHTML = dateTime;
+          setTimeout(clock, 1000);
+        }
+      });
+    </script>
+  </body>
+</html>

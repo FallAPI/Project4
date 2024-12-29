@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Reservation</title>
+        <link
+        rel="stylesheet" href="../styles/form.css"/>
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+
+        <!-- icons -->
+        <script src="https://kit.fontawesome.com/386e64cde3.js" crossorigin="anonymous"></script>
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="navbar-logo">
+                    <a href="../index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
+                            <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"/>
+                        </svg>
+                        <span>SINIIAJA.</span>
+                    </a>
+                </div>
+
+                <div class="navbar-nav">
+                    <a href="../index.html">Home</a>
+                    <a href="../views/profile.html">About Us</a>
+                    <a href="../views/services.html">Services</a>
+                    <a href="../views/reservation.html" class="active">Reservation</a>
+                    <a href="../views/contactus.html">Contact Us</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <div class="img-con">
+                    <img src="../assets/logo/aaaaa.jpg" alt="hello"/>
+                </div>
+                <div class="container">
+                    <div class="form-container">
+                        <form method="post" id="form">
+                            <h1>Reservation Form</h1>
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter your name" required/>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Enter your email" required/>
+                            <label for="phone">Phone</label>
+                            <input type="number" name="phone" id="phone" placeholder="+62 8xx-xxxx-xxx" required/>
+                            <label for="date">Date</label>
+                            <input type="date" name="date" id="date" required/>
+                            <label for="service">Choose your service:
+                            </label>
+                            <select name="service" id="service" required>
+                                <option value="Web Developmet">
+                                    Web & Mobile Apps development
+                                </option>
+                                <option value="UI/UX Development">UI/UX Development</option>
+                                <option value="API Development & Integration">
+                                    API Development & Integration
+                                </option>
+                                <option value="Cloud Strategy & Migration">
+                                    Cloud Strategy & Migration
+                                </option>
+                                <option value="Cloud Platform Selection & Implementation">
+                                    Cloud Platform Selection & Implementation
+                                </option>
+                                <option value="Cloud-Native Application Development">
+                                    Cloud-Native Application Development
+                                </option>
+                                <option value="DevOps & CI/CD">DevOps & CI/CD</option>
+                            </select>
+                            <div class="button">
+                                <button type="submit" name="submit" form="form" id="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <!-- FOOTER AND COPYRIGHT -->
+            <div
+                class="copyright">
+                <!-- <div class="footer-left">#404nf</div> -->
+                <div class="footer-cp">
+                    Copyright &copy; 2024 by
+                    <span id="author">SINIIAJA Developers</span>. All Rights
+                                Reserved.
+                </div>
+                <!-- <div class="footer-summary"><span id="summaryid">~Summary</span></div> -->
+            </div>
+            <!-- FOOTER END -->
+
+            <!-- POP UP START -->
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <div class="profile">
+                        <img src="./assets/logo/hero-image.jpg" alt="`s photo"/>
+                        <h2>Developed by Altaf, Kanda & Naufal</h2>
+                        <p>
+                            For Business Inquiries, feel free to reach me out directly at:
+                            <a href="https://wa.me/6285884011606" target="_blank" rel="noopener noreferrer">https://wa.me/6285884011606</a>
+                            <p>You also could check my personal Github pages at:
+                                <a href="https://github.com/KndaBimaa17" target="_blank" rel="noopener noreferrer">https://github.com/KndaBimaa17</a>
+                            </p>
+                        </p>
+                    </div>
+                    <button id="closeBtn">Close</button>
+                </div>
+            </div>
+            <!-- POP UP END -->
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+           // Form Validation and Submission
+ const form = document.getElementById("form");
+ const emailInput = document.getElementById("email");
+ const submitButton = document.getElementById("submit");
+ const loadingIndicator = document.createElement("span");
+
+ loadingIndicator.classList.add("loading");
+ submitButton.appendChild(loadingIndicator);
+
+ function validateEmail(email) {
+   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+   return re.test(String(email).toLowerCase());
+ }
+
+ form.addEventListener("submit", async function (event) {
+   event.preventDefault();
+   const email = emailInput.value.trim();
+
+   if (!validateEmail(email)) {
+     Swal.fire({
+       icon: "error",
+       title: "Invalid Email",
+       text: "Please enter a valid email address.",
+     });
+     return;
+   }
+
+   submitButton.disabled = true;
+   loadingIndicator.classList.add("active");
+
+   const data = new FormData(form);
+   try {
+     const response = await fetch(form.action, {
+       method: form.method,
+       body: data,
+       headers: { Accept: "application/json" },
+     });
+
+     if (response.ok) {
+       Swal.fire({
+         icon: "success",
+         title: "Success",
+         text: "Thanks for your submission!",
+       });
+       form.reset();
+     } else {
+       const responseData = await response.json();
+       const errorMessages = responseData.errors
+         ? responseData.errors.map((error) => error.message).join(", ")
+         : "Oops! There was a problem submitting your form.";
+       Swal.fire({
+         icon: "error",
+         title: "Submission Error",
+         text: errorMessages,
+       });
+     }
+   } catch (error) {
+     Swal.fire({
+       icon: "error",
+       title: "Submission Error",
+       text: "Oops! There was a problem submitting your form.",
+     });
+   } finally {
+     submitButton.disabled = false;
+     loadingIndicator.classList.remove("active");
+   }
+ });
+        </script>
+    </body>
+</html>

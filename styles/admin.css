@@ -1,0 +1,146 @@
+:root {
+  --primary-color: #222831;
+  --secondary-color: #393e46;
+  --accent-color: #00adb5;
+  --neutral-color: #eeeeee;
+  --neutral-color-50: rgba(255, 255, 255, 0.5);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2%;
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--secondary-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  color: var(--neutral-color);
+}
+
+.navbar-logo a {
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--neutral-color);
+  font-style: italic;
+}
+
+.navbar-logo a span {
+  font-weight: normal;
+  margin: auto 0;
+}
+
+.navbar > div:last-child {
+  font-size: 1.4rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+aside {
+  bottom: 0;
+min-height: 100vh;
+width: 15%;
+position: absolute;
+padding: 10rem 2% 2rem;
+background-color: #1d232c;
+position: fixed;
+}
+
+.aside-inner {
+  padding: 1.4rem 0;
+}
+
+.aside-inner a {
+  font-size: 1.8rem;
+  color: var(--neutral-color);
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 10rem 2% 6rem 17%;
+}
+
+.hero-wrap {
+  display: block;
+}
+
+.hero-1 p {
+  font-size: 3rem;
+  color: var(--primary-color);
+  font-weight: 900;
+  text-shadow: 1px 2px 3px;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.hero-wrap span {
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: black;
+  text-shadow: none;
+}
+
+.hero-2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin: 2rem 0 4rem;
+}
+
+.small-card {
+  display: flex;
+  align-items: center;
+  background-color: #d9d9d9;
+  box-shadow: 3px 4px 5px var(--secondary-color);
+  padding: 2rem 1.6rem;
+  border-radius: 1rem 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.small-card p {
+  margin-left: 10px;
+}
+
+.hero-3 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  gap: 80px;
+}
+
+.big-card {
+  background-color: #222831;
+  color: var(--neutral-color);
+  padding: 2rem 3rem;
+  box-shadow: 3px 4px 5px var(--secondary-color);
+  border-radius: 10rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.big-card:hover {
+  background-color: rgb(57, 62, 70, 0.5);
+  color: black;
+}
